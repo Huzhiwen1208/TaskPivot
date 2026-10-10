@@ -103,13 +103,18 @@ int Count(struct VariableArray *va, int found) {
 }
 
 int Pop(struct VariableArray *va) {
-    printf("Pop Unimplemented!\n");
-    exit(-1);
+    if (va->currentLength == 0) {
+        printf("IndexError: pop from empty list!\n");
+        exit(-1);
+    }
+
+    va->currentLength -= 1;
+    return va->e[va->currentLength];
 }
 
 int Clear(struct VariableArray *va) {
-    printf("Clear Unimplemented!\n");
-    exit(-1);
+    va->currentLength = 0;
+    return 1;
 }
 
 int main() {
@@ -144,16 +149,15 @@ int main() {
 
     printf("%d\n", Count(va, 3)); // va.count(3)
 
-    // TODO: WTK
     printf("Before pop, ");
     Printf(va);
-    Pop(va); // TODO
+    Pop(va);
     printf("After pop, ");
     Printf(va);
 
     printf("Before clear, ");
     Printf(va);
-    Clear(va); // TODO
+    Clear(va);
     printf("After clear, ");
     Printf(va);
 
