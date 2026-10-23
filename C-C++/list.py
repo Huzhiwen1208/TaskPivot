@@ -1,41 +1,42 @@
-e = []
-print(f'len e = {len(e)}')
-e.append(1)
-print(f'e[0] = {e[0]}')
-print(f'len e = {len(e)}')
+import sys
 
-e.append(2)
-e.append(3)
-e.append(4)
-e.append(5)
-e.append(6)
-e.append(7)
+fx = []
+gx = []
+hx = []
 
-print(e.index(6))
+n, m = 0, 0
+take = 0
+iline = []
+uline = []
 
-e.append(3)
-e.append(10)
-e.append(8)
-e.append(9)
+lines = sys.stdin.readlines()
 
-print(f"e = {e}")
-e.sort()
-print(f"e = {e}")
+for i, line in enumerate(lines):
+    iline = line.split( )
+    uline = [int(iline[0]), int(iline[1])]
+    if i == 0:
+        n, m = uline[0], uline[1]
+        continue
 
-e.reverse()
-print(f"e = {e}")
+    if take >= n:
+        gx.append(uline)
+    else:
+        fx.append(uline)
+    take += 1
 
-a = 1
-b = 2
-b, a = a, b
-print(a, b)
 
-print(e.count(3))
+fx_point = 0
+gx_point = 0
 
-print(f"Before pop, e = {e}")
-e.pop()
-print(f"After pop, e = {e}")
+while fx_point < len(fx) and gx_point < len(gx):
+    if fx[fx_point][0] > gx[fx_point][0]:
+        hx.append(fx[fx_point])
+        fx_point += 1
+    elif fx[fx_point][0] < gx[fx_point][0]:
+        hx.append(gx[gx_point])
+        gx_point += 1
+    else:
+        fx_point += 1
+        gx_point += 1
 
-print(f"Before clear, e = {e}")
-e.clear()
-print(f"After clear, e = {e}")
+print(hx)
