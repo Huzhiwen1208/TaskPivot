@@ -1,0 +1,24 @@
+{
+  "name": "orbit-notes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "星穹手记 —— 沉浸式 3D 个人博客",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "jsdom": "^25.0.1",
+    "vite": "^7.2.2",
+    "vitest": "^3.2.4"
+  }
+}
